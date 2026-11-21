@@ -113,6 +113,8 @@ import me.rerere.rikkahub.ui.pages.mediacreation.MediaCreationSessionsPage
 import me.rerere.rikkahub.ui.pages.search.SearchPage
 import me.rerere.rikkahub.ui.pages.setting.SettingAboutPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesPage
+import me.rerere.rikkahub.ui.components.root.RootConfirmOverlay
+import me.rerere.rikkahub.ui.pages.setting.SettingRootPermissionPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesThemePage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesNotificationPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesGeneralPage
@@ -215,6 +217,7 @@ class RouteActivity : ComponentActivity() {
                         .build()
                 }
                 AppRoutes()
+                RootConfirmOverlay()
             }
         }
     }
@@ -458,6 +461,9 @@ class RouteActivity : ComponentActivity() {
 
                             entry<Screen.SettingPreferences> {
                                 SettingPreferencesPage()
+                            }
+                            entry<Screen.SettingRootPermission> {
+                                SettingRootPermissionPage()
                             }
 
                             entry<Screen.SettingPreferencesTheme> {
@@ -730,6 +736,9 @@ sealed interface Screen : NavKey {
 
     @Serializable
     data object SettingPreferences : Screen
+
+    @Serializable
+    data object SettingRootPermission : Screen
 
     @Serializable
     data object SettingPreferencesTheme : Screen

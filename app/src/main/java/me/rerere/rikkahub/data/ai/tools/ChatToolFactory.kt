@@ -17,6 +17,9 @@ import me.rerere.rikkahub.data.repository.MemoryRepository
 import me.rerere.rikkahub.data.repository.WorkspaceRepository
 import me.rerere.rikkahub.data.repository.memoryId
 import me.rerere.rikkahub.data.skills.SkillManager
+import me.rerere.rikkahub.data.ai.RootReviewer
+import me.rerere.rikkahub.data.ai.root.RootGate
+import me.rerere.rikkahub.data.ai.root.RootShellManager
 import me.rerere.rikkahub.service.BackgroundShellManager
 import me.rerere.workspace.WorkspaceShellStatus
 import java.io.File
@@ -46,6 +49,9 @@ class ChatToolFactory(
     private val skillManager: SkillManager,
     private val workspaceRepository: WorkspaceRepository,
     private val backgroundShellManager: BackgroundShellManager,
+    private val rootShell: RootShellManager,
+    private val rootGate: RootGate,
+    private val rootReviewer: RootReviewer,
 ) {
     suspend fun createTools(
         settings: Settings,
@@ -64,6 +70,17 @@ class ChatToolFactory(
                 addAll(createSearchTools(settings))
             }
             addAll(localTools.getTools(assistant.localTools))
+            if (settings.rootPermission.enabled) {
+                addAll(
+                    createRootTools(
+                        settings = settings,
+                        shell = rootShell,
+                        gate = rootGate,
+                        reviewer = rootReviewer,
+                        exportDir = java.io.File(context.filesDir, "root_exports"),
+                    )
+                )
+            }
             if (assistant.enableRecentChatsReference) {
                 addAll(createConversationTools(conversationRepository, assistant.id))
             }

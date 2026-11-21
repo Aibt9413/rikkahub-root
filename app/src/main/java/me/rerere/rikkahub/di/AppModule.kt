@@ -6,6 +6,9 @@ import com.google.firebase.crashlytics.crashlytics
 import kotlinx.serialization.json.Json
 import me.rerere.rikkahub.AppScope
 import me.rerere.rikkahub.data.ai.ChatRequestFactory
+import me.rerere.rikkahub.data.ai.RootReviewer
+import me.rerere.rikkahub.data.ai.root.RootGate
+import me.rerere.rikkahub.data.ai.root.RootShellManager
 import me.rerere.rikkahub.data.ai.tools.ChatToolFactory
 import me.rerere.rikkahub.data.ai.tools.local.LocalTools
 import me.rerere.rikkahub.data.event.AppEventBus
@@ -107,6 +110,12 @@ val appModule = module {
         )
     }
 
+    single { RootShellManager(get()) }
+
+    single { RootReviewer(get(), get()) }
+
+    single { RootGate() }
+
     single {
         ChatToolFactory(
             context = get(),
@@ -117,6 +126,9 @@ val appModule = module {
             skillManager = get(),
             workspaceRepository = get(),
             backgroundShellManager = get(),
+            rootShell = get(),
+            rootGate = get(),
+            rootReviewer = get(),
         )
     }
 

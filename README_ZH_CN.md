@@ -98,3 +98,29 @@
 ## 📄 许可证
 
 本项目基于 [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0) 开源。
+
+## Root / Shell 权限（本 fork 新增）
+
+本 fork 在设置里新增了**高级权限**页面，允许智能体在设备上使用 shell / root 能力。
+
+### 执行后端
+- **Root（su）** —— KernelSU / Magisk，以 uid 0 执行
+- **Shizuku** —— 通过 Shizuku UserService 执行（uid 2000；Shizuku 以 root 启动时为 uid 0）
+- **无线 ADB** —— 用 6 位配对码与本机无线调试端口配对，以 shell（uid 2000）执行
+
+### 权限档位
+- **只读** —— 列目录、读文件、复制到沙箱分析，不提供任意 shell
+- **受限写入** —— 允许 shell，但 S3/S4 命令会被拒绝
+- **完全 root** —— 确认后允许所有命令
+
+### 安全模型
+- 每次危险请求都会弹确认框，统一 **5 秒**倒计时
+- 高风险命令需要输入随机短语
+- **应用保护区**（银行、QQ、微信、支付类）与保护路径**硬禁止**，不提供确认选项
+- 可选的 **AI 自动审查**：先由另一个模型审查命令，拒绝的仍由你决定
+- 所有 root 工具（list/read/copy-out/shell）都经过同一套风险分级与确认闸门
+
+### 构建说明
+- 构建前需自行放置 `app/google-services.json`
+- 签名配置从 `local.properties` 读取（`storeFile`、`storePassword`、`keyAlias`、`keyPassword`）
+- 预编译 APK：`release/RikkaHub-Root-v3.3.0.apk`

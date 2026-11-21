@@ -75,6 +75,8 @@ android {
 
     buildTypes {
         release {
+            applicationIdSuffix = ".root"
+            versionNameSuffix = "-root"
             signingConfig = signingConfigs.getByName("release")
             optimization {
                 enable = true
@@ -109,9 +111,13 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        aidl = true
+    }
+    lint {
+        disable += "PackagedPrivateKey"
     }
     sourceSets {
-        getByName("androidTest").assets.srcDirs("$projectDir/schemas")
+        getByName("androidTest").assets.directories.add("$projectDir/schemas")
     }
     androidResources {
         generateLocaleConfig = true
@@ -192,6 +198,12 @@ configurations.matching { it.name.endsWith("UnitTestRuntimeClasspath") }.configu
 
 dependencies {
     implementation(libs.quickjs)
+    implementation(libs.libsu.core)
+    implementation(libs.shizuku.api)
+    implementation(libs.shizuku.provider)
+    implementation(libs.libadb) {
+        exclude(group = "org.bouncycastle", module = "bcprov-jdk15to18")
+    }
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.process)

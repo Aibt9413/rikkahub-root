@@ -1931,4 +1931,47 @@
   <string name="quick_start_card_desc">RikkaHub needs a model provider to chat. Follow the quick start to set up a provider and default model, or migrate your chat history from DeepSeek.</string>
   <string name="setting_page_quick_start">Quick Start</string>
   <string name="setting_page_quick_start_desc">Set up providers and models step by step, or migrate from DeepSeek</string>
+
+  <string name="setting_root_page_title">Advanced permissions</string>
+  <string name="setting_root_page_title_desc">Root access, confirmation gates and protected apps</string>
+  <string name="setting_root_page_general">Root access</string>
+  <string name="setting_root_page_enable">Enable root tools</string>
+  <string name="setting_root_page_enable_desc">Off by default. Every root call is classified and confirmed.</string>
+  <string name="setting_root_page_tier">Permission tier</string>
+  <string name="setting_root_tier_off">Off</string>
+  <string name="setting_root_tier_read_only">Read only</string>
+  <string name="setting_root_tier_read_only_desc">Read-only: list, read and copy files out for analysis. No arbitrary shell.</string>
+  <string name="setting_root_tier_restricted">Restricted write</string>
+  <string name="setting_root_tier_restricted_desc">Restricted write: shell allowed, but S3/S4 commands are rejected.</string>
+  <string name="setting_root_tier_full">Full root</string>
+  <string name="setting_root_tier_full_desc">Full root: every command allowed after confirmation. Protected apps stay blocked.</string>
+  <string name="setting_root_page_root_status">Root status</string>
+  <string name="setting_root_page_root_checking">Checking…</string>
+  <string name="setting_root_page_root_granted">Root granted</string>
+  <string name="setting_root_page_root_denied">Root not granted (grant it in KernelSU/Magisk)</string>
+  <string name="setting_root_page_confirm">Confirmation</string>
+  <string name="setting_root_page_confirm_every">Confirm every request</string>
+  <string name="setting_root_page_confirm_every_desc">Recommended. Each root tool call shows a dialog.</string>
+  <string name="setting_root_page_auto_review">AI auto review (experimental)</string>
+  <string name="setting_root_page_auto_review_desc">A separate model reviews each command first. Denials still need your decision. Costs extra tokens.</string>
+  <string name="setting_root_page_per_turn">Allow for this turn</string>
+  <string name="setting_root_page_per_turn_desc">Not recommended. Auto-approves S0-S2 only; S3/S4 always ask.</string>
+  <string name="setting_root_page_protected">Protected apps</string>
+  <string name="setting_root_page_protected_desc">Blocked paths and packages</string>
+  <string name="setting_root_page_protected_hint">Commands touching these packages are always rejected, without a confirmation option.</string>
+  <string name="setting_root_page_protected_add">Add</string>
+  <string name="setting_root_page_protected_package">Protected package</string>
+  <string name="setting_root_page_protected_remove">Remove</string>
+  <string name="setting_root_page_notes">Notes</string>
+  <string name="setting_root_page_note_text">Root access is powerful: a prompt-injected model could read private data or modify the system. Keep the tier low and review commands before allowing them.</string>
+
+
+  <string name="setting_root_page_backend">Execution backend</string>
+  <string name="setting_root_backend_root">Root (su)</string>
+  <string name="setting_root_backend_shizuku">Shizuku</string>
+  <string name="setting_root_backend_adb">ADB (wireless)</string>
+  <string name="setting_root_shizuku_request">Request Shizuku permission</string>
+  <string name="setting_root_adb_pair_code">Pairing code (6 digits)</string>
+  <string name="setting_root_adb_pair">Pair</string>
+  <string name="setting_root_adb_connect">Connect</string>
 </resources>

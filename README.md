@@ -97,3 +97,29 @@ If you like this project, please give it a star ⭐
 ## 📄 License
 
 This project is licensed under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0).
+
+## Root & Shell permissions (fork addition)
+
+This fork adds an **Advanced permissions** section to Settings, allowing the agent to use shell/root capabilities on the device.
+
+### Execution backends
+- **Root (su)** — KernelSU / Magisk, runs as uid 0
+- **Shizuku** — runs through a Shizuku user service (uid 2000, or uid 0 when Shizuku is started as root)
+- **Wireless ADB** — pair with the on-device wireless debugging port using a 6-digit code, runs as shell (uid 2000)
+
+### Permission tiers
+- **Read only** — list/read/copy-out files, no arbitrary shell
+- **Restricted write** — shell allowed, S3/S4 commands rejected
+- **Full root** — every command allowed after confirmation
+
+### Safety model
+- Every dangerous request shows a confirmation dialog with a **5 second** countdown
+- High-risk commands require typing a random phrase
+- **Protected apps** (banks, QQ, WeChat, payment apps) and protected paths are hard-blocked without a confirmation option
+- Optional **AI auto-review**: a separate model reviews each command first; denials still require your decision
+- All root tools (list/read/copy-out/shell) are routed through the same risk classifier and gate
+
+### Build notes
+- Add your own `app/google-services.json` (Firebase config) before building
+- Signing config is read from `local.properties` (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`)
+- Prebuilt APK: `release/RikkaHub-Root-v3.3.0.apk`

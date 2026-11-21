@@ -1933,4 +1933,47 @@ mDNS 地址：使用 .local 主机名，同一网络中的其他设备可通过�
   <string name="quick_start_card_desc">RikkaHub 需要接入模型服务商才能聊天。跟着快速入门配置提供商和默认模型，也可以从 DeepSeek 迁移聊天记录。</string>
   <string name="setting_page_quick_start">快速入门</string>
   <string name="setting_page_quick_start_desc">一步步配置提供商和模型，或从 DeepSeek 迁移</string>
+
+  <string name="setting_root_page_title">高级权限</string>
+  <string name="setting_root_page_title_desc">root 权限、确认闸门与应用保护区</string>
+  <string name="setting_root_page_general">root 权限</string>
+  <string name="setting_root_page_enable">启用 root 工具</string>
+  <string name="setting_root_page_enable_desc">默认关闭。每次 root 调用都会分级并确认。</string>
+  <string name="setting_root_page_tier">权限档位</string>
+  <string name="setting_root_tier_off">关闭</string>
+  <string name="setting_root_tier_read_only">只读</string>
+  <string name="setting_root_tier_read_only_desc">只读：列目录、读文件、复制到沙箱分析，不提供任意 shell。</string>
+  <string name="setting_root_tier_restricted">受限写入</string>
+  <string name="setting_root_tier_restricted_desc">受限写入：允许 shell，但 S3/S4 命令会被拒绝。</string>
+  <string name="setting_root_tier_full">完全 root</string>
+  <string name="setting_root_tier_full_desc">完全 root：确认后允许所有命令。保护区始终硬禁止。</string>
+  <string name="setting_root_page_root_status">root 状态</string>
+  <string name="setting_root_page_root_checking">检测中…</string>
+  <string name="setting_root_page_root_granted">已获得 root</string>
+  <string name="setting_root_page_root_denied">未获得 root（请在 KernelSU/Magisk 中授权）</string>
+  <string name="setting_root_page_confirm">确认设置</string>
+  <string name="setting_root_page_confirm_every">每次请求都确认</string>
+  <string name="setting_root_page_confirm_every_desc">推荐开启。每次 root 工具调用都会弹窗。</string>
+  <string name="setting_root_page_auto_review">AI 自动审查（实验）</string>
+  <string name="setting_root_page_auto_review_desc">先由另一个模型审查命令，拒绝的仍由你决定是否放行，会消耗额外 token。</string>
+  <string name="setting_root_page_per_turn">本轮自动允许</string>
+  <string name="setting_root_page_per_turn_desc">不建议开启。仅自动放行 S0-S2；S3/S4 始终询问。</string>
+  <string name="setting_root_page_protected">应用保护区</string>
+  <string name="setting_root_page_protected_desc">硬禁止的路径与包名</string>
+  <string name="setting_root_page_protected_hint">触碰这些包的命令会被直接拒绝，不提供确认选项。</string>
+  <string name="setting_root_page_protected_add">添加</string>
+  <string name="setting_root_page_protected_package">受保护应用</string>
+  <string name="setting_root_page_protected_remove">移除</string>
+  <string name="setting_root_page_notes">说明</string>
+  <string name="setting_root_page_note_text">root 权限风险极高：被提示注入的模型可能读取隐私或修改系统。请保持低档位，并在允许前检查命令。</string>
+
+
+  <string name="setting_root_page_backend">执行后端</string>
+  <string name="setting_root_backend_root">Root（su）</string>
+  <string name="setting_root_backend_shizuku">Shizuku</string>
+  <string name="setting_root_backend_adb">ADB（无线调试）</string>
+  <string name="setting_root_shizuku_request">请求 Shizuku 授权</string>
+  <string name="setting_root_adb_pair_code">配对码（6 位数字）</string>
+  <string name="setting_root_adb_pair">配对</string>
+  <string name="setting_root_adb_connect">连接</string>
 </resources>

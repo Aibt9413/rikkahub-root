@@ -63,6 +63,7 @@ import me.rerere.hugeicons.stroke.Megaphone01
 import me.rerere.hugeicons.stroke.Moon02
 import me.rerere.hugeicons.stroke.Package
 import me.rerere.hugeicons.stroke.ServerStack01
+import me.rerere.hugeicons.stroke.Shield01
 import me.rerere.hugeicons.stroke.Rocket01
 import me.rerere.hugeicons.stroke.Settings03
 import me.rerere.hugeicons.stroke.Share04
@@ -216,6 +217,12 @@ fun SettingPage(vm: SettingVM = koinViewModel()) {
                         leadingContent = { CardGroupIcon(HugeIcons.Settings03, containerColor = containerColor, contentColor = contentColor) },
                         supportingContent = { Text(stringResource(R.string.setting_page_preferences_desc)) },
                         headlineContent = { Text(stringResource(R.string.setting_page_preferences)) },
+                    )
+                    item(
+                        onClick = { navController.navigate(Screen.SettingRootPermission) },
+                        leadingContent = { CardGroupIcon(HugeIcons.Shield01, containerColor = containerColor, contentColor = contentColor) },
+                        supportingContent = { Text(stringResource(R.string.setting_root_page_title_desc)) },
+                        headlineContent = { Text(stringResource(R.string.setting_root_page_title)) },
                     )
                     item(
                         onClick = { navController.navigate(Screen.Assistant) },
